@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+    <div th:if="${user == null}">
+        <title>Добавить</title>
+    </div>
+    <div th:if="${user != null}">
+        <title>Редактировать</title>
+    </div>
+</head>
+<body>
+<div th:if="${user != null}">
+    <form th:action="edit" method="POST">
+        <input type="hidden" name="id" th:field="${user.id}">
+        <label for="name">Имя</label>
+        <input type="text" name="name" id="name" th:field="${user.name}">
+        <label for="lastName">Фамилия</label>
+        <input type="text" name="lastName" id="lastName" th:field="${user.lastName}">
+        <label for="email">Email</label>
+        <input type="text" name="email" id="email" th:field="${user.email}">
+        <input type="submit" value="Редактировать пользователя">
+    </form>
+</div>
+<div th:if="${user == null}">
+    <form th:action="add" method="POST">
+        <label for="name">Имя</label>
+        <input type="text" name="name" id="name">
+        <label for="lastName">Фамилия</label>
+        <input type="text" name="lastName" id="lastName">
+        <label for="email">Email</label>
+        <input type="text" name="email" id="email">
+        <input type="submit" value="Добавить пользователя">
+    </form>
+</div>
+
+<h5><a href="/">Главная страница</a></h5>
+</body>
+</html>

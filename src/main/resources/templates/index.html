@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+    <title>Пользователи</title>
+</head>
+<body>
+
+<h2>Пользователи</h2>
+<table>
+    <tr>
+        <th>id</th>
+        <th>Имя</th>
+        <th>Фамилия</th>
+        <th>email</th>
+    </tr>
+    <tbody>
+    <tr th:each="user : ${userList}">
+        <td th:text="${user.id}">id</td>
+        <td th:text="${user.name}">Имя</td>
+        <td th:text="${user.lastName}">Фамилия</td>
+        <td th:text="${user.email}">email</td>
+        <td>
+            <a th:href="@{/edit/{id}(id=${user.id})}">Редактировать</a>
+            <a th:href="@{/delete/{id}(id=${user.id})}">Удалить</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<h2>Добавить</h2>
+<a href="/add">Добавить нового пользователя</a>
+</body>
+</html>
